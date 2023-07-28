@@ -1,48 +1,52 @@
 /******************************************************************************
- *  Compilation:  javac LazyPrimMST.java
- *  Execution:    java LazyPrimMST filename.txt
- *  Dependencies: EdgeWeightedGraph.java Edge.java Queue.java
- *                MinPQ.java UF.java In.java StdOut.java
+ *  Compilation:  javac KruskalMST.java
+ *  Execution:    java  KruskalMST filename.txt
+ *  Dependencies: EdgeWeightedGraph.java Edge.java Queue.java MinPQ.java
+ *                UF.java In.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
- *  Compute a minimum spanning forest using a lazy version of Prim's
- *  algorithm.
+ *  Compute a minimum spanning forest using Kruskal's algorithm.
  *
- *  %  java LazyPrimMST tinyEWG.txt
+ *  %  java KruskalMST tinyEWG.txt
  *  0-7 0.16000
+ *  2-3 0.17000
  *  1-7 0.19000
  *  0-2 0.26000
- *  2-3 0.17000
  *  5-7 0.28000
  *  4-5 0.35000
  *  6-2 0.40000
  *  1.81000
  *
- *  % java LazyPrimMST mediumEWG.txt
- *  0-225   0.02383
- *  49-225  0.03314
- *  44-49   0.02107
- *  44-204  0.01774
- *  49-97   0.03121
- *  202-204 0.04207
- *  176-202 0.04299
- *  176-191 0.02089
- *  68-176  0.04396
- *  58-68   0.04795
- *  10.46351
- *
- *  % java LazyPrimMST largeEWG.txt
+ *  % java KruskalMST mediumEWG.txt
+ *  168-231 0.00268
+ *  151-208 0.00391
+ *  7-157   0.00516
+ *  122-205 0.00647
+ *  8-152   0.00702
+ *  156-219 0.00745
+ *  28-198  0.00775
+ *  38-126  0.00845
+ *  10-123  0.00886
  *  ...
- *  647.66307
+ *  10.46351
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.union_find_application;
+
+import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.EdgeWeightedGraph;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.union_find.UnionFindUF;
+
+import java.util.Arrays;
 
 /**
- *  The {@code LazyPrimMST} class represents a data type for computing a
+ *  The {@code KruskalMST} class represents a data type for computing a
  *  <em>minimum spanning tree</em> in an edge-weighted graph.
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
@@ -51,68 +55,65 @@ package edu.princeton.cs.algs4;
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
- *  This implementation uses a lazy version of <em>Prim's algorithm</em>
- *  with a binary heap of edges.
+ *  This implementation uses <em>Kruskal's algorithm</em> and the
+ *  union-find data type.
  *  The constructor takes &Theta;(<em>E</em> log <em>E</em>) time in
- *  the worst case, where <em>V</em> is the number of vertices and
- *  <em>E</em> is the number of edges.
+ *  the worst case.
  *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>E</em>) extra space in the worst case
- *  (not including the edge-weighted graph).
+ *  It uses &Theta;(<em>E</em>) extra space (not including the graph).
+ *  <p>
+ *  This {@code weight()} method correctly computes the weight of the MST
+ *  if all arithmetic performed is without floating-point rounding error
+ *  or arithmetic overflow.
+ *  This is the case if all edge weights are non-negative integers
+ *  and the weight of the MST does not exceed 2<sup>52</sup>.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  For alternate implementations, see {@link PrimMST}, {@link KruskalMST},
+ *  For alternate implementations, see {@link LazyPrimMST}, {@link PrimMST},
  *  and {@link BoruvkaMST}.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class LazyPrimMST {
+public class KruskalMST {
     private static final double FLOATING_POINT_EPSILON = 1.0E-12;
 
-    private double weight;       // total weight of MST
-    private Queue<Edge> mst;     // edges in the MST
-    private boolean[] marked;    // marked[v] = true iff v on tree
-    private MinPQ<Edge> pq;      // edges with one endpoint in tree
+    private double weight;                        // weight of MST
+    private Queue<Edge> mst = new Queue<Edge>();  // edges in MST
 
     /**
      * Compute a minimum spanning tree (or forest) of an edge-weighted graph.
      * @param G the edge-weighted graph
      */
-    public LazyPrimMST(EdgeWeightedGraph G) {
-        mst = new Queue<Edge>();
-        pq = new MinPQ<Edge>();
-        marked = new boolean[G.V()];
-        for (int v = 0; v < G.V(); v++)     // run Prim from all vertices to
-            if (!marked[v]) prim(G, v);     // get a minimum spanning forest
+    public KruskalMST(EdgeWeightedGraph G) {
+
+        // create array of edges, sorted by weight
+        Edge[] edges = new Edge[G.E()];
+        int t = 0;
+        for (Edge e: G.edges()) {
+            edges[t++] = e;
+        }
+        Arrays.sort(edges);
+
+        // run greedy algorithm
+        UnionFindUF uf = new UnionFindUF(G.V());
+        for (int i = 0; i < G.E() && mst.size() < G.V() - 1; i++) {
+            Edge e = edges[i];
+            int v = e.either();
+            int w = e.other(v);
+
+            // v-w does not create a cycle
+            if (uf.find(v) != uf.find(w)) {
+                uf.union(v, w);     // merge v and w components
+                mst.enqueue(e);     // add edge e to mst
+                weight += e.weight();
+            }
+        }
 
         // check optimality conditions
         assert check(G);
-    }
-
-    // run Prim's algorithm
-    private void prim(EdgeWeightedGraph G, int s) {
-        scan(G, s);
-        while (!pq.isEmpty()) {                        // better to stop when mst has V-1 edges
-            Edge e = pq.delMin();                      // smallest edge on pq
-            int v = e.either(), w = e.other(v);        // two endpoints
-            assert marked[v] || marked[w];
-            if (marked[v] && marked[w]) continue;      // lazy, both v and w already scanned
-            mst.enqueue(e);                            // add e to MST
-            weight += e.weight();
-            if (!marked[v]) scan(G, v);               // v becomes part of tree
-            if (!marked[w]) scan(G, w);               // w becomes part of tree
-        }
-    }
-
-    // add all edges e incident to v onto pq if the other endpoint has not yet been scanned
-    private void scan(EdgeWeightedGraph G, int v) {
-        assert !marked[v];
-        marked[v] = true;
-        for (Edge e : G.adj(v))
-            if (!marked[e.other(v)]) pq.insert(e);
     }
 
     /**
@@ -135,18 +136,18 @@ public class LazyPrimMST {
     // check optimality conditions (takes time proportional to E V lg* V)
     private boolean check(EdgeWeightedGraph G) {
 
-        // check weight
-        double totalWeight = 0.0;
+        // check total weight
+        double total = 0.0;
         for (Edge e : edges()) {
-            totalWeight += e.weight();
+            total += e.weight();
         }
-        if (Math.abs(totalWeight - weight()) > FLOATING_POINT_EPSILON) {
-            System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", totalWeight, weight());
+        if (Math.abs(total - weight()) > FLOATING_POINT_EPSILON) {
+            System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", total, weight());
             return false;
         }
 
         // check that it is acyclic
-        UnionFind uf = new UnionFind(G.V());
+        UnionFindUF uf = new UnionFindUF(G.V());
         for (Edge e : edges()) {
             int v = e.either(), w = e.other(v);
             if (uf.find(v) == uf.find(w)) {
@@ -169,7 +170,7 @@ public class LazyPrimMST {
         for (Edge e : edges()) {
 
             // all edges in MST except e
-            uf = new UnionFind(G.V());
+            uf = new UnionFindUF(G.V());
             for (Edge f : mst) {
                 int x = f.either(), y = f.other(x);
                 if (f != e) uf.union(x, y);
@@ -193,14 +194,14 @@ public class LazyPrimMST {
 
 
     /**
-     * Unit tests the {@code LazyPrimMST} data type.
+     * Unit tests the {@code KruskalMST} data type.
      *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
-        LazyPrimMST mst = new LazyPrimMST(G);
+        KruskalMST mst = new KruskalMST(G);
         for (Edge e : mst.edges()) {
             StdOut.println(e);
         }
@@ -208,6 +209,7 @@ public class LazyPrimMST {
     }
 
 }
+
 
 /******************************************************************************
  *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.

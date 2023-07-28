@@ -19,7 +19,17 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.union_find_application;
+
+import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.EdgeWeightedGraph;
+import edu.princeton.cs.algs4.FlowEdge;
+import edu.princeton.cs.algs4.FlowNetwork;
+import edu.princeton.cs.algs4.FordFulkerson;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.IndexMaxPQ;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.union_find.UnionFindUF;
 
 /**
  *  The {@code GlobalMincut} class represents a data type for computing a
@@ -143,7 +153,7 @@ public class GlobalMincut {
      * @param t the vertex {@code t}
      * @param uf the union-find data type
      */
-    private void makeCut(int t, UnionFind uf) {
+    private void makeCut(int t, UnionFindUF uf) {
         for (int v = 0; v < cut.length; v++) {
             cut[v] = (uf.find(v) == uf.find(t));
         }
@@ -158,7 +168,7 @@ public class GlobalMincut {
      * @param a the starting vertex
      */
     private void minCut(EdgeWeightedGraph G, int a) {
-        UnionFind uf = new UnionFind(G.V());
+        UnionFindUF uf = new UnionFindUF(G.V());
         boolean[] marked = new boolean[G.V()];
         cut = new boolean[G.V()];
         CutPhase cp = new CutPhase(0.0, a, a);

@@ -36,7 +36,15 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.union_find_application;
+
+import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.EdgeWeightedGraph;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.IndexMinPQ;
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.union_find.UnionFindUF;
 
 /**
  *  The {@code PrimMST} class represents a data type for computing a
@@ -166,7 +174,7 @@ public class PrimMST {
         }
 
         // check that it is acyclic
-        UnionFind uf = new UnionFind(G.V());
+        UnionFindUF uf = new UnionFindUF(G.V());
         for (Edge e : edges()) {
             int v = e.either(), w = e.other(v);
             if (uf.find(v) == uf.find(w)) {
@@ -189,7 +197,7 @@ public class PrimMST {
         for (Edge e : edges()) {
 
             // all edges in MST except e
-            uf = new UnionFind(G.V());
+            uf = new UnionFindUF(G.V());
             for (Edge f : edges()) {
                 int x = f.either(), y = f.other(x);
                 if (f != e) uf.union(x, y);

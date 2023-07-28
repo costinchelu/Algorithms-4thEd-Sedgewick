@@ -21,7 +21,14 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.union_find_application;
+
+import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.EdgeWeightedGraph;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.union_find.UnionFindUF;
 
 /**
  *  The {@code BoruvkaMST} class represents a data type for computing a
@@ -68,7 +75,7 @@ public class BoruvkaMST {
      * @param G the edge-weighted graph
      */
     public BoruvkaMST(EdgeWeightedGraph G) {
-        UnionFind uf = new UnionFind(G.V());
+        UnionFindUF uf = new UnionFindUF(G.V());
 
         // repeat at most log V times or until we have V-1 edges
         for (int t = 1; t < G.V() && mst.size() < G.V() - 1; t = t + t) {
@@ -140,7 +147,7 @@ public class BoruvkaMST {
         }
 
         // check that it is acyclic
-        UnionFind uf = new UnionFind(G.V());
+        UnionFindUF uf = new UnionFindUF(G.V());
         for (Edge e : edges()) {
             int v = e.either(), w = e.other(v);
             if (uf.find(v) == uf.find(w)) {
@@ -163,7 +170,7 @@ public class BoruvkaMST {
         for (Edge e : edges()) {
 
             // all edges in MST except e
-            uf = new UnionFind(G.V());
+            uf = new UnionFindUF(G.V());
             for (Edge f : mst) {
                 int x = f.either(), y = f.other(x);
                 if (f != e) uf.union(x, y);
