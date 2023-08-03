@@ -12,35 +12,7 @@
 			<url>http://www.gnu.org/licenses/gpl-3.0.en.html</url>
 		</license>
 	</licenses>
-	<developers>
-		<developer>
-			<id>kevin</id>
-			<name>Kevin Wayne</name>
-			<email>wayne@CS.Princeton.EDU</email>
-			<url>https://www.cs.princeton.edu/~wayne/contact/</url>
-			<organization>Princeton University </organization>
-			<organizationUrl>https://www.cs.princeton.edu</organizationUrl>
-			<roles>
-				<role>author</role>
-				<role>developer</role>
-			</roles>
-			<timezone>UTC/GMT -4:00 hours</timezone>
-			<properties>
-				<picUrl>https://www.cs.princeton.edu/~wayne/contact/KevinWayne.jpg</picUrl>
-			</properties>
-		</developer>
-		<developer>
-			<id>robert</id>
-			<name>Robert Sedgewick</name>
-			<roles>
-				<role>author</role>
-			</roles>
-		</developer>
-	</developers>
-	<issueManagement>
-		<system>github.com</system>
-		<url>https://github.com/kevin-wayne/algs4/issues</url>
-	</issueManagement>
+
 	<profiles>
 		<profile>
 			<id>main-build</id>
@@ -82,5 +54,10 @@
 		</profile>
 	</profiles>
 	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.28</version>
+		</dependency>
 	</dependencies>  
 </project>
