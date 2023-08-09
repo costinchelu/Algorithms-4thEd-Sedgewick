@@ -1,15 +1,10 @@
-/******************************************************************************
- *  Compilation:  javac Point2D.java
- *  Execution:    java Point2D x0 y0 n
- *  Dependencies: StdDraw.java StdRandom.java
- *
- *  Immutable point data type for points in the plane.
- *
- ******************************************************************************/
+package edu.princeton.cs.algs4.geometric_obj;
 
-package edu.princeton.cs.algs4;
+import edu.princeton.cs.algs4.in_out.StdDraw;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 
@@ -28,6 +23,9 @@ import java.util.Comparator;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Point2D implements Comparable<Point2D> {
 
     /**
@@ -46,6 +44,7 @@ public final class Point2D implements Comparable<Point2D> {
     public static final Comparator<Point2D> R_ORDER = new ROrder();
 
     private final double x;    // x coordinate
+
     private final double y;    // y coordinate
 
     /**
@@ -66,22 +65,6 @@ public final class Point2D implements Comparable<Point2D> {
 
         if (y == 0.0) this.y = 0.0;  // convert -0.0 to +0.0
         else          this.y = y;
-    }
-
-    /**
-     * Returns the x-coordinate.
-     * @return the x-coordinate
-     */
-    public double x() {
-        return x;
-    }
-
-    /**
-     * Returns the y-coordinate.
-     * @return the y-coordinate
-     */
-    public double y() {
-        return y;
     }
 
     /**
@@ -265,43 +248,6 @@ public final class Point2D implements Comparable<Point2D> {
         }
     }
 
-
-    /**
-     * Compares this point to the specified point.
-     *
-     * @param  other the other point
-     * @return {@code true} if this point equals {@code other};
-     *         {@code false} otherwise
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) return true;
-        if (other == null) return false;
-        if (other.getClass() != this.getClass()) return false;
-        Point2D that = (Point2D) other;
-        return this.x == that.x && this.y == that.y;
-    }
-
-    /**
-     * Return a string representation of this point.
-     * @return a string representation of this point in the format (x, y)
-     */
-    @Override
-    public String toString() {
-        return "(" + x + ", " + y + ")";
-    }
-
-    /**
-     * Returns an integer hash code for this point.
-     * @return an integer hash code for this point
-     */
-    @Override
-    public int hashCode() {
-        int hashX = ((Double) x).hashCode();
-        int hashY = ((Double) y).hashCode();
-        return 31*hashX + hashY;
-    }
-
     /**
      * Plot this point using standard draw.
      */
@@ -316,71 +262,4 @@ public final class Point2D implements Comparable<Point2D> {
     public void drawTo(Point2D that) {
         StdDraw.line(this.x, this.y, that.x, that.y);
     }
-
-
-    /**
-     * Unit tests the point data type.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        int x0 = Integer.parseInt(args[0]);
-        int y0 = Integer.parseInt(args[1]);
-        int n = Integer.parseInt(args[2]);
-
-        StdDraw.setCanvasSize(800, 800);
-        StdDraw.setXscale(0, 100);
-        StdDraw.setYscale(0, 100);
-        StdDraw.setPenRadius(0.005);
-        StdDraw.enableDoubleBuffering();
-
-        Point2D[] points = new Point2D[n];
-        for (int i = 0; i < n; i++) {
-            int x = StdRandom.uniformInt(100);
-            int y = StdRandom.uniformInt(100);
-            points[i] = new Point2D(x, y);
-            points[i].draw();
-        }
-
-        // draw p = (x0, x1) in red
-        Point2D p = new Point2D(x0, y0);
-        StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.setPenRadius(0.02);
-        p.draw();
-
-
-        // draw line segments from p to each point, one at a time, in polar order
-        StdDraw.setPenRadius();
-        StdDraw.setPenColor(StdDraw.BLUE);
-        Arrays.sort(points, p.polarOrder());
-        for (int i = 0; i < n; i++) {
-            p.drawTo(points[i]);
-            StdDraw.show();
-            StdDraw.pause(100);
-        }
-    }
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

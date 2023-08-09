@@ -11,6 +11,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code EdgeWeightedDirectedCycle} class represents a data type for
  *  determining whether an edge-weighted digraph has a directed cycle.

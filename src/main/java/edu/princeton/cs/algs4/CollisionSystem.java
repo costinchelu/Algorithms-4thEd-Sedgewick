@@ -18,6 +18,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdDraw;
+import edu.princeton.cs.algs4.in_out.StdIn;
+
 import java.awt.Color;
 
 /**

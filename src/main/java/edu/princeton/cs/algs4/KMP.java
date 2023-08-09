@@ -31,6 +31,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code KMP} class finds the first occurrence of a pattern string
  *  in a text string.

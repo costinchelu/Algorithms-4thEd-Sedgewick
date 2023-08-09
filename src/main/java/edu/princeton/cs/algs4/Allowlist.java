@@ -29,6 +29,11 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+import edu.princeton.cs.algs4.section_1_2.StaticSETofInts;
+
 /**
  *  The {@code Allowlist} class provides a client for reading in
  *  a set of integers from a file; reading in a sequence of integers

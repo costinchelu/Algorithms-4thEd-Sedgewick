@@ -26,6 +26,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code PatriciaST} class provides an implementation of an unordered
  *  symbol table of key-value pairs, with the restriction that the key is of

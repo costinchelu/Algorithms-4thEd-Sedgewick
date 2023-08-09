@@ -28,6 +28,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code BreadthDirectedFirstPaths} class represents a data type for
  *  finding shortest paths (number of edges) from a source vertex <em>s</em>

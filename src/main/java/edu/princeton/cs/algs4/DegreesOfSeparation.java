@@ -51,6 +51,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code DegreesOfSeparation} class provides a client for finding
  *  the degree of separation between one distinguished individual and

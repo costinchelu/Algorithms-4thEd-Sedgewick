@@ -12,6 +12,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code GraphGenerator} class provides static methods for creating
  *  various graphs, including Erdos-Renyi random graphs, random bipartite

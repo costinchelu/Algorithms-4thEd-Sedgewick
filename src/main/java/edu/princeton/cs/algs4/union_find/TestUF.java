@@ -1,7 +1,7 @@
 package edu.princeton.cs.algs4.union_find;
 
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
 
 public class TestUF {
 

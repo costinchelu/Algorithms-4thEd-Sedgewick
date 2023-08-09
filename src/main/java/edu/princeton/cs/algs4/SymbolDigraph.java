@@ -18,6 +18,10 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code SymbolDigraph} class represents a digraph, where the
  *  vertex names are arbitrary strings.

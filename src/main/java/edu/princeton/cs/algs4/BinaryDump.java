@@ -22,6 +22,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code BinaryDump} class provides a client for displaying the contents
  *  of a binary file in binary.

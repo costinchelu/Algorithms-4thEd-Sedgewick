@@ -16,6 +16,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code DoublingTest} class provides a client for measuring
  *  the running time of a method using a doubling test.

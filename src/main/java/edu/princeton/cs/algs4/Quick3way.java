@@ -23,6 +23,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Quick3way} class provides static methods for sorting an
  *  array using quicksort with 3-way partitioning.

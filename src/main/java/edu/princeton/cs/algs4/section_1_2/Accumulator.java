@@ -1,16 +1,9 @@
-/******************************************************************************
- *  Compilation:  javac Accumulator.java
- *  Execution:    java Accumulator < input.txt
- *  Dependencies: StdOut.java StdIn.java
- *
- *  Mutable data type that calculates the mean, sample standard
- *  deviation, and sample variance of a stream of real numbers
- *  use a stable, one-pass algorithm.
- *
- ******************************************************************************/
+package edu.princeton.cs.algs4.section_1_2;
 
-package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+import lombok.NoArgsConstructor;
 
 /**
  *  The {@code Accumulator} class is a data type for computing the running
@@ -33,16 +26,14 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
+@NoArgsConstructor
 public class Accumulator {
-    private int n = 0;          // number of data values
-    private double sum = 0.0;   // sample variance * (n-1)
-    private double mu = 0.0;    // sample mean
 
-    /**
-     * Initializes an accumulator.
-     */
-    public Accumulator() {
-    }
+    private int n = 0;          // number of data values
+
+    private double sum = 0.0;   // sample variance * (n-1)
+
+    private double mu = 0.0;    // sample mean
 
     /**
      * Adds the specified data value to the accumulator.
@@ -119,27 +110,3 @@ public class Accumulator {
         StdOut.println(stats);
     }
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

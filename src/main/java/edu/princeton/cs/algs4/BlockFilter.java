@@ -30,6 +30,10 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code BlockFilter} class provides a client for reading in a <em>blocklist</em>
  *  of words from a file; then, reading in a sequence of words from standard input,

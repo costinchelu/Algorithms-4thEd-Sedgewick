@@ -17,6 +17,8 @@
 package edu.princeton.cs.algs4;
 
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code FloydWarshall} class represents a data type for solving the
  *  all-pairs shortest paths problem in edge-weighted digraphs with

@@ -9,6 +9,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.geometric_obj.Point2D;
+import edu.princeton.cs.algs4.in_out.StdDraw;
+
 /**
  *  The {@code RectHV} class is an immutable data type to encapsulate a
  *  two-dimensional axis-aligned rectagle with real-value coordinates.
@@ -72,7 +75,7 @@ public final class RectHV {
      *
      * @return the maximum <em>x</em>-coordinate of any point in this rectangle
      */
-    public double xmax() {
+    public double xmagetX() {
         return xmax;
     }
 
@@ -90,7 +93,7 @@ public final class RectHV {
      *
      * @return the maximum <em>y</em>-coordinate of any point in this rectangle
      */
-    public double ymax() {
+    public double ymagetX() {
         return ymax;
     }
 
@@ -135,8 +138,8 @@ public final class RectHV {
                possibly at the boundary; {@code false} otherwise
      */
     public boolean contains(Point2D p) {
-        return (p.x() >= xmin) && (p.x() <= xmax)
-            && (p.y() >= ymin) && (p.y() <= ymax);
+        return (p.getX() >= xmin) && (p.getX() <= xmax)
+            && (p.getY() >= ymin) && (p.getY() <= ymax);
     }
 
     /**
@@ -160,10 +163,10 @@ public final class RectHV {
      */
     public double distanceSquaredTo(Point2D p) {
         double dx = 0.0, dy = 0.0;
-        if      (p.x() < xmin) dx = p.x() - xmin;
-        else if (p.x() > xmax) dx = p.x() - xmax;
-        if      (p.y() < ymin) dy = p.y() - ymin;
-        else if (p.y() > ymax) dy = p.y() - ymax;
+        if      (p.getX() < xmin) dx = p.getX() - xmin;
+        else if (p.getX() > xmax) dx = p.getX() - xmax;
+        if      (p.getY() < ymin) dy = p.getY() - ymin;
+        else if (p.getY() > ymax) dy = p.getY() - ymax;
         return dx*dx + dy*dy;
     }
 

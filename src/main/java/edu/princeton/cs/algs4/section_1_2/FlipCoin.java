@@ -17,7 +17,7 @@ public class FlipCoin {
             else tails.increment();
         }
 
-        System.out.println(heads);;
+        System.out.println(heads);
         System.out.println(tails);
 
         int d = heads.tally() - tails.tally();

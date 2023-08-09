@@ -32,6 +32,9 @@
 package edu.princeton.cs.algs4;
 
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code DijkstraSP} class represents a data type for solving the
  *  single-source shortest paths problem in edge-weighted digraphs

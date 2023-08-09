@@ -1,4 +1,6 @@
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.in_out;
+
+import edu.princeton.cs.algs4.BinaryStdOut;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

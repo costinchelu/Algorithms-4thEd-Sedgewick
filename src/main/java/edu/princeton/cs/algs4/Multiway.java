@@ -25,6 +25,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Multiway} class provides a client for reading in several
  *  sorted text files and merging them together into a single sorted

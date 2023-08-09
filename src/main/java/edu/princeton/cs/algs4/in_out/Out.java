@@ -7,8 +7,10 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.in_out;
 
+
+import edu.princeton.cs.algs4.BinaryOut;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

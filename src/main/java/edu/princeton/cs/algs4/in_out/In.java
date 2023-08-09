@@ -1,13 +1,6 @@
-/******************************************************************************
- *  Compilation:  javac In.java
- *  Execution:    java In   (basic test --- see source for required files)
- *  Dependencies: none
- *
- *  Reads in data of various types from standard input, files, and URLs.
- *
- ******************************************************************************/
+package edu.princeton.cs.algs4.in_out;
 
-package edu.princeton.cs.algs4;
+import edu.princeton.cs.algs4.BinaryIn;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -17,6 +10,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.Socket;
 import java.net.URLConnection;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -584,6 +578,17 @@ public final class In {
         scanner.close();
     }
 
+    public String getFileFromResources(String fileName) throws Exception {
+        URL resourceUrl = this.getClass().getClassLoader().getResource(fileName);
+
+        if (resourceUrl != null) {
+            return Paths.get(resourceUrl.toURI()).toString();
+        } else {
+            System.out.println("Resource not found.");
+            return "";
+        }
+    }
+
     /**
      * Reads all integers from a file and returns them as
      * an array of integers.
@@ -793,27 +798,3 @@ public final class In {
     }
 
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

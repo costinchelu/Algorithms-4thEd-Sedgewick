@@ -24,6 +24,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code MergeBU} class provides static methods for sorting an
  *  array using <em>bottom-up mergesort</em>. It is non-recursive.

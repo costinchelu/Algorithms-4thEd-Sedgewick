@@ -28,6 +28,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code SuffixArrayX} class represents a suffix array of a string of
  *  length <em>n</em>.

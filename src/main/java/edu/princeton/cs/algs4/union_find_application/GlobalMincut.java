@@ -26,9 +26,9 @@ import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.FlowEdge;
 import edu.princeton.cs.algs4.FlowNetwork;
 import edu.princeton.cs.algs4.FordFulkerson;
-import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.IndexMaxPQ;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.in_out.StdOut;
 import edu.princeton.cs.algs4.union_find.UnionFindUF;
 
 /**

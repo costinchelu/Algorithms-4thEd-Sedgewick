@@ -10,6 +10,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code SeparateChainingHashST} class represents a symbol table of generic
  *  key-value pairs.

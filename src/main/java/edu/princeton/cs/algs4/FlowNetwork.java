@@ -10,6 +10,9 @@
 package edu.princeton.cs.algs4;
 
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code FlowNetwork} class represents a capacitated network
  *  with vertices named 0 through <em>V</em> - 1, where each directed

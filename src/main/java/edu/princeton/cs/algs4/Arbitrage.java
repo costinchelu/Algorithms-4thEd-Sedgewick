@@ -24,6 +24,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Arbitrage} class provides a client that finds an arbitrage
  *  opportunity in a currency exchange table by constructing a

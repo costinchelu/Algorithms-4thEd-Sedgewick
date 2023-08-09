@@ -1,7 +1,5 @@
 package edu.princeton.cs.algs4.section_1_2;
 
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdRandom;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -53,33 +51,5 @@ public class Counter implements Comparable<Counter> {
     @Override
     public int compareTo(Counter that) {
         return Integer.compare(this.count, that.count);
-    }
-
-
-    /**
-     * Reads two command-line integers n and trials; creates n counters;
-     * increments trials counters at random; and prints results.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
-        int trials = Integer.parseInt(args[1]);
-
-        // create n counters
-        Counter[] hits = new Counter[n];
-        for (int i = 0; i < n; i++) {
-            hits[i] = new Counter("counter" + i);
-        }
-
-        // increment trials counters at random
-        for (int t = 0; t < trials; t++) {
-            hits[StdRandom.uniformInt(n)].increment();
-        }
-
-        // print results
-        for (int i = 0; i < n; i++) {
-            StdOut.println(hits[i]);
-        }
     }
 }

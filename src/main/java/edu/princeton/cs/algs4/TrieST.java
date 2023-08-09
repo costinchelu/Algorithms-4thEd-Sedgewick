@@ -20,6 +20,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code TrieST} class represents a symbol table of key-value
  *  pairs, with string keys and generic values.

@@ -33,6 +33,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code DepthFirstOrder} class represents a data type for
  *  determining depth-first search ordering of the vertices in a digraph

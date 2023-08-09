@@ -15,6 +15,8 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code LinearProgramming} class represents a data type for solving a
  *  linear program of the form { max cx : Ax &le; b, x &ge; 0 }, where A is an

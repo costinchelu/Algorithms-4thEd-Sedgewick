@@ -22,6 +22,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Cycle} class represents a data type for
  *  determining whether an undirected graph has a simple cycle.

@@ -1,0 +1,95 @@
+### .idea ###
+# **/.idea/workspace.xml
+# **/.idea/tasks.xml
+# **/.idea/usage.statistics.xml
+# **/.idea/dictionaries
+# **/.idea/shelf
+# **/.idea/aws.xml
+# **/.idea/contentModel.xml
+# **/.idea/dataSources/
+# **/.idea/dataSources.ids
+# **/.idea/dataSources.local.xml
+# **/.idea/sqlDataSources.xml
+# **/.idea/dynamic.xml
+# **/.idea/uiDesigner.xml
+# **/.idea/dbnavigator.xml
+# **/.idea/gradle.xml
+# **/.idea/libraries
+# **/.idea/*.iml
+# **/.idea/**/mongoSettings.xml
+# **/.idea_modules/
+# **/.idea/replstate.xml
+# **/.idea/sonarlint
+# **/.idea/httpRequests
+# **/.idea/caches/
+# **/.idea/sonarIssues.xml
+# **/.idea/**/markdown-navigator.xml
+# **/.idea/**/markdown-navigator-enh.xml
+# **/.idea/**/markdown-navigator/
+# **/.idea/$CACHE_FILE$
+# **/.idea/codestream.xml
+# **//.idea/navEditor.xml
+# **//.idea/assetWizardSettings.xml
+# .idea/modules
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/misc.xml
+**/.idea
+
+**/cmake-build-*/
+**/out
+**/target
+**/.DS_Store
+**/*.DS_store
+**/.classpath
+**/.project
+**/.factorypath
+**/com_crashlytics_export_strings.xml
+**/crashlytics.properties
+**/crashlytics-build.properties
+**/fabric.properties
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.mvn
+**/.gradle
+**/captures
+**/.externalNativeBuild
+**/.cxx
+**/.navigation/
+**/local.properties
+**/lint/
+
+### Node ###
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/lerna-debug.log*
+**/.pnpm-debug.log*
+**/.npm
+**/pids
+**/*.pid
+**/*.seed
+**/*.pid.lock
+**/node_modules/
+**/node modules
+**/jspm_packages/
+**/.eslintcache
+**/*.sass-cache
+**/.pnp
+
+### Python ###
+**/env/
+**/venv/
+**/ENV/
+**/env.bak/
+**/venv.bak/
+
+**/.vscode/
+**/.ipynb_checkpoints
+**/test-output

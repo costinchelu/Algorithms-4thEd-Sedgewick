@@ -34,6 +34,9 @@
 package edu.princeton.cs.algs4;
 
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Count} class provides an {@link Alphabet} client for reading
  *  in a piece of text and computing the frequency of occurrence of each

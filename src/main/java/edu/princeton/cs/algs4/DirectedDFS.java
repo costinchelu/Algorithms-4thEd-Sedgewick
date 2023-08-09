@@ -22,6 +22,10 @@
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
+
+import edu.princeton.cs.algs4.in_out.In;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code DirectedDFS} class represents a data type for
  *  determining the vertices reachable from a given source vertex <em>s</em>

@@ -1,13 +1,4 @@
-/******************************************************************************
- *  Compilation:  javac StdIn.java
- *  Execution:    java StdIn   (interactive test of basic functionality)
- *  Dependencies: none
- *
- *  Reads in data of various types from standard input.
- *
- ******************************************************************************/
-
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.in_out;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

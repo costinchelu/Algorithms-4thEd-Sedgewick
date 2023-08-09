@@ -24,6 +24,9 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 /**
  *  The {@code Shell} class provides static methods for sorting an
  *  array using <em>Shellsort</em> with

@@ -26,6 +26,10 @@
 
 package edu.princeton.cs.algs4;
 
+import edu.princeton.cs.algs4.geometric_obj.Point2D;
+import edu.princeton.cs.algs4.in_out.StdIn;
+import edu.princeton.cs.algs4.in_out.StdOut;
+
 import java.util.Arrays;
 
 
