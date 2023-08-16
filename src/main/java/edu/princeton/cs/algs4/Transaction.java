@@ -10,6 +10,7 @@
 package edu.princeton.cs.algs4;
 
 import edu.princeton.cs.algs4.in_out.StdOut;
+import edu.princeton.cs.algs4.section_1_2.Date;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,7 +28,7 @@ import java.util.Comparator;
  */
 public class Transaction implements Comparable<Transaction> {
     private final String  who;      // customer
-    private final Date    when;     // date
+    private final Date when;     // date
     private final double  amount;   // amount
 
 
