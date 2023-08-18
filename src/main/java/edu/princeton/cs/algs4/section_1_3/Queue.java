@@ -2,7 +2,6 @@ package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.ResizingArrayQueue;
 import edu.princeton.cs.algs4.in_out.In;
-import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
 
 import java.util.Iterator;
@@ -33,9 +32,9 @@ import java.util.NoSuchElementException;
  */
 public class Queue<Item> implements Iterable<Item> {
     
-    private Node<Item> first;    // beginning of queue
+    private Node<Item> head;    // beginning of queue
     
-    private Node<Item> last;     // end of queue
+    private Node<Item> tail;     // end of queue
     
     private int n;               // number of elements on queue
 
@@ -51,8 +50,8 @@ public class Queue<Item> implements Iterable<Item> {
      * Initializes an empty queue.
      */
     public Queue() {
-        first = null;
-        last  = null;
+        head = null;
+        tail = null;
         n = 0;
     }
 
@@ -62,7 +61,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return {@code true} if this queue is empty; {@code false} otherwise
      */
     public boolean isEmpty() {
-        return first == null;
+        return head == null;
     }
 
     /**
@@ -80,12 +79,12 @@ public class Queue<Item> implements Iterable<Item> {
      * @param  item the item to add
      */
     public void enqueue(Item item) {
-        Node<Item> oldLast = last;
-        last = new Node<>();
-        last.item = item;
-        last.next = null;
-        if (isEmpty()) first = last;
-        else           oldLast.next = last;
+        Node<Item> oldTail = tail;
+        tail = new Node<>();
+        tail.item = item;
+        tail.next = null;
+        if (isEmpty()) head = tail;
+        else           oldTail.next = tail;
         n++;
     }
 
@@ -97,10 +96,10 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        Item item = first.item;
-        first = first.next;
+        Item item = head.item;
+        head = head.next;
         n--;
-        if (isEmpty()) last = null;   // to avoid loitering
+        if (isEmpty()) tail = null;   // to avoid loitering
         return item;
     }
 
@@ -112,7 +111,7 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return first.item;
+        return head.item;
     }
 
     /**
@@ -135,7 +134,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
     public Iterator<Item> iterator()  {
-        return new LinkedIterator(first);
+        return new LinkedIterator(head);
     }
 
     /** an iterator, doesn't implement remove() since it's optional */

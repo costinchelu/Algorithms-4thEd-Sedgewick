@@ -2,7 +2,6 @@ package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.ResizingArrayStack;
 import edu.princeton.cs.algs4.in_out.In;
-import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
 
 import java.util.Iterator;
@@ -33,7 +32,7 @@ import java.util.NoSuchElementException;
  */
 public class Stack<Item> implements Iterable<Item> {
 
-    private Node<Item> first;     // top of stack
+    private Node<Item> top;     // top of stack
 
     private int n;                // size of the stack
 
@@ -49,7 +48,7 @@ public class Stack<Item> implements Iterable<Item> {
      * Initializes an empty stack.
      */
     public Stack() {
-        first = null;
+        top = null;
         n = 0;
     }
 
@@ -59,7 +58,7 @@ public class Stack<Item> implements Iterable<Item> {
      * @return true if this stack is empty; false otherwise
      */
     public boolean isEmpty() {
-        return first == null;
+        return top == null;
     }
 
     /**
@@ -77,10 +76,10 @@ public class Stack<Item> implements Iterable<Item> {
      * @param  item the item to add
      */
     public void push(Item item) {
-        Node<Item> oldFirst = first;
-        first = new Node<>();
-        first.item = item;
-        first.next = oldFirst;
+        Node<Item> oldTop = top;
+        top = new Node<>();
+        top.item = item;
+        top.next = oldTop;
         n++;
     }
 
@@ -92,8 +91,8 @@ public class Stack<Item> implements Iterable<Item> {
      */
     public Item pop() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = first.item;        // save item to return
-        first = first.next;            // delete first node
+        Item item = top.item;        // save item to return
+        top = top.next;            // delete first node
         n--;
         return item;                   // return the saved item
     }
@@ -107,7 +106,7 @@ public class Stack<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        return first.item;
+        return top.item;
     }
 
     /**
@@ -131,7 +130,7 @@ public class Stack<Item> implements Iterable<Item> {
      * @return an iterator to this stack that iterates through the items in LIFO order
      */
     public Iterator<Item> iterator() {
-        return new LinkedIterator(first);
+        return new LinkedIterator(top);
     }
 
     /** an iterator, doesn't implement remove() since it's optional */

@@ -1,32 +1,3 @@
-/******************************************************************************
- *  Compilation:  javac LinkedBag.java
- *  Execution:    java LinkedBag < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *
- *  A generic bag or multiset, implemented using a singly linked list.
- *
- *  % more tobe.txt
- *  to be or not to - be - - that - - - is
- *
- *  % java LinkedBag < tobe.txt
- *  size of bag = 14
- *  is
- *  -
- *  -
- *  -
- *  that
- *  -
- *  -
- *  be
- *  -
- *  to
- *  not
- *  or
- *  be
- *  to
- *
- ******************************************************************************/
-
 package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.in_out.StdIn;
@@ -52,12 +23,16 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedBag<Item> implements Iterable<Item> {
+
     private Node first;    // beginning of bag
+
     private int n;         // number of elements in bag
 
     // helper linked list class
     private class Node {
+
         private Item item;
+
         private Node next;
     }
 
@@ -90,10 +65,10 @@ public class LinkedBag<Item> implements Iterable<Item> {
      * @param item the item to add to this bag
      */
     public void add(Item item) {
-        Node oldfirst = first;
+        Node oldFirst = first;
         first = new Node();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
         n++;
     }
 
@@ -105,8 +80,8 @@ public class LinkedBag<Item> implements Iterable<Item> {
         return new LinkedIterator();
     }
 
-    // an iterator over a linked list
     private class LinkedIterator implements Iterator<Item> {
+
         private Node current;
 
         // creates a new iterator
@@ -139,7 +114,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        LinkedBag<String> bag = new LinkedBag<String>();
+        LinkedBag<String> bag = new LinkedBag<>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             bag.add(item);
@@ -153,27 +128,3 @@ public class LinkedBag<Item> implements Iterable<Item> {
 
 
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

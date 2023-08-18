@@ -83,9 +83,7 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Returns an iterator that iterates over the items in this bag in arbitrary order.
-     *
-     * @return an iterator that iterates over the items in this bag in arbitrary order
+     * @return an iterator that iterates over the items in this bag in arbitrary order.
      */
     public Iterator<Item> iterator()  {
         return new LinkedIterator(first);
