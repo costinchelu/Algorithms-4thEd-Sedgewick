@@ -23,7 +23,7 @@
 
 package edu.princeton.cs.algs4.union_find_application;
 
-import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.section_1_3.Bag;
 import edu.princeton.cs.algs4.Edge;
 import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.in_out.In;

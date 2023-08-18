@@ -39,7 +39,7 @@ package edu.princeton.cs.algs4.union_find_application;
 import edu.princeton.cs.algs4.Edge;
 import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.in_out.In;
-import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.section_1_3.Queue;
 import edu.princeton.cs.algs4.in_out.StdOut;
 import edu.princeton.cs.algs4.union_find.UnionFindUF;
 

@@ -1,26 +1,7 @@
-/******************************************************************************
- *  Compilation:  javac Stack.java
- *  Execution:    java Stack < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *
- *  A generic stack, implemented using a singly linked list.
- *  Each stack element is of type Item.
- *
- *  This version uses a static nested class Node (to save 8 bytes per
- *  Node), whereas the version in the textbook uses a non-static nested
- *  class (for simplicity).
- *
- *  % more tobe.txt
- *  to be or not to - be - - that - - - is
- *
- *  % java Stack < tobe.txt
- *  to be not that or be (2 left on stack)
- *
- ******************************************************************************/
+package edu.princeton.cs.algs4.section_1_3;
 
-package edu.princeton.cs.algs4;
-
+import edu.princeton.cs.algs4.ResizingArrayStack;
+import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
 
@@ -51,12 +32,16 @@ import java.util.NoSuchElementException;
  *  @param <Item> the generic type each item in this stack
  */
 public class Stack<Item> implements Iterable<Item> {
+
     private Node<Item> first;     // top of stack
+
     private int n;                // size of the stack
 
-    // helper linked list class
+    /** helper linked list class */
     private static class Node<Item> {
+
         private Item item;
+
         private Node<Item> next;
     }
 
@@ -92,10 +77,10 @@ public class Stack<Item> implements Iterable<Item> {
      * @param  item the item to add
      */
     public void push(Item item) {
-        Node<Item> oldfirst = first;
-        first = new Node<Item>();
+        Node<Item> oldFirst = first;
+        first = new Node<>();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
         n++;
     }
 
@@ -149,8 +134,9 @@ public class Stack<Item> implements Iterable<Item> {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    /** an iterator, doesn't implement remove() since it's optional */
     private class LinkedIterator implements Iterator<Item> {
+
         private Node<Item> current;
 
         public LinkedIterator(Node<Item> first) {
@@ -173,46 +159,29 @@ public class Stack<Item> implements Iterable<Item> {
         }
     }
 
-
     /**
      * Unit tests the {@code Stack} data type.
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
-            if (!item.equals("-"))
-                stack.push(item);
-            else if (!stack.isEmpty())
-                StdOut.print(stack.pop() + " ");
+    public static void main(String[] args) throws Exception {
+        In getFileName = new In();
+        In in = new In(getFileName.getFileFromResources("strings.txt"));
+        String[] read = in.readAllLines();
+
+        Stack<String> stack = new Stack<>();
+        for (String s : read) {
+            stack.push(s);
         }
+
+        StdOut.println(stack);
+
+        StdOut.println("peek: " + stack.peek());
         StdOut.println("(" + stack.size() + " left on stack)");
+
+        while (!stack.isEmpty()) {
+            stack.pop();
+        }
+        StdOut.println("\n(" + stack.size() + " left on stack)");
     }
 }
-
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

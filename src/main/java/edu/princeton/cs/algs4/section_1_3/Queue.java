@@ -1,18 +1,7 @@
-/******************************************************************************
- *  Compilation:  javac Queue.java
- *  Execution:    java Queue < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *
- *  A generic queue, implemented using a linked list.
- *
- *  % java Queue < tobe.txt
- *  to be or not to be (2 left on queue)
- *
- ******************************************************************************/
+package edu.princeton.cs.algs4.section_1_3;
 
-package edu.princeton.cs.algs4;
-
+import edu.princeton.cs.algs4.ResizingArrayQueue;
+import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
 
@@ -43,13 +32,18 @@ import java.util.NoSuchElementException;
  *  @param <Item> the generic type of each item in this queue
  */
 public class Queue<Item> implements Iterable<Item> {
+    
     private Node<Item> first;    // beginning of queue
+    
     private Node<Item> last;     // end of queue
+    
     private int n;               // number of elements on queue
 
-    // helper linked list class
+    /** helper linked list class */
     private static class Node<Item> {
+        
         private Item item;
+        
         private Node<Item> next;
     }
 
@@ -81,28 +75,17 @@ public class Queue<Item> implements Iterable<Item> {
     }
 
     /**
-     * Returns the item least recently added to this queue.
-     *
-     * @return the item least recently added to this queue
-     * @throws NoSuchElementException if this queue is empty
-     */
-    public Item peek() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return first.item;
-    }
-
-    /**
      * Adds the item to this queue.
      *
      * @param  item the item to add
      */
     public void enqueue(Item item) {
-        Node<Item> oldlast = last;
-        last = new Node<Item>();
+        Node<Item> oldLast = last;
+        last = new Node<>();
         last.item = item;
         last.next = null;
         if (isEmpty()) first = last;
-        else           oldlast.next = last;
+        else           oldLast.next = last;
         n++;
     }
 
@@ -119,6 +102,17 @@ public class Queue<Item> implements Iterable<Item> {
         n--;
         if (isEmpty()) last = null;   // to avoid loitering
         return item;
+    }
+
+    /**
+     * Returns the item least recently added to this queue.
+     *
+     * @return the item least recently added to this queue
+     * @throws NoSuchElementException if this queue is empty
+     */
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        return first.item;
     }
 
     /**
@@ -144,16 +138,22 @@ public class Queue<Item> implements Iterable<Item> {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    /** an iterator, doesn't implement remove() since it's optional */
     private class LinkedIterator implements Iterator<Item> {
+        
         private Node<Item> current;
 
         public LinkedIterator(Node<Item> first) {
             current = first;
         }
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+           return current != null;
+        }
+
+        public void remove() {
+           throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
@@ -162,46 +162,30 @@ public class Queue<Item> implements Iterable<Item> {
             return item;
         }
     }
-
-
+    
     /**
      * Unit tests the {@code Queue} data type.
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
-        Queue<String> queue = new Queue<String>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
-            if (!item.equals("-"))
-                queue.enqueue(item);
-            else if (!queue.isEmpty())
-                StdOut.print(queue.dequeue() + " ");
+    public static void main(String[] args) throws Exception {
+        In getFileName = new In();
+        In in = new In(getFileName.getFileFromResources("strings.txt"));
+        String[] read = in.readAllLines();
+
+        Queue<String> queue = new Queue<>();
+        for (String s : read) {
+            queue.enqueue(s);
+        }
+
+        StdOut.println(queue);
+
+        StdOut.println("peek: " + queue.peek());
+        StdOut.println("(" + queue.size() + " left on queue)");
+
+        while (!queue.isEmpty()) {
+            queue.dequeue();
         }
         StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

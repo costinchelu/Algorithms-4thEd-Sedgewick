@@ -11,7 +11,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
