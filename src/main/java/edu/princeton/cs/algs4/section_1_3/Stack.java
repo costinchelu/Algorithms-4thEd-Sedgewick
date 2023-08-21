@@ -1,6 +1,5 @@
 package edu.princeton.cs.algs4.section_1_3;
 
-import edu.princeton.cs.algs4.ResizingArrayStack;
 import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.in_out.StdOut;
 

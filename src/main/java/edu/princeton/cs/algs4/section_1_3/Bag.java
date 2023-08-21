@@ -1,8 +1,6 @@
 package edu.princeton.cs.algs4.section_1_3;
 
-import edu.princeton.cs.algs4.ResizingArrayBag;
 import edu.princeton.cs.algs4.in_out.In;
-import edu.princeton.cs.algs4.in_out.StdIn;
 import edu.princeton.cs.algs4.in_out.StdOut;
 
 import java.util.Iterator;

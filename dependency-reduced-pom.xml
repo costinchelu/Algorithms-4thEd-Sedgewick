@@ -46,7 +46,7 @@
                 <configuration>
                   <transformers>
                     <transformer>
-                      <mainClass>edu.princeton.cs.algs4.section_1_3.LinkedBag</mainClass>
+                      <mainClass>edu.princeton.cs.algs4.geometric_obj.mandelbrot.Mandelbrot</mainClass>
                     </transformer>
                   </transformers>
                 </configuration>
