@@ -1,16 +1,3 @@
-/******************************************************************************
- *  Compilation:  javac LinkedQueue.java
- *  Execution:    java LinkedQueue < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *
- *  A generic queue, implemented using a singly linked list.
- *
- *  % java Queue < tobe.txt
- *  to be or not to be (2 left on queue)
- *
- ******************************************************************************/
-
 package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.in_out.StdIn;
@@ -39,13 +26,18 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedQueue<Item> implements Iterable<Item> {
+    
     private int n;         // number of elements on queue
-    private Node first;    // beginning of queue
-    private Node last;     // end of queue
+    
+    private Node head;    // beginning of queue
+    
+    private Node tail;     // end of queue
 
     // helper linked list class
     private class Node {
+        
         private Item item;
+        
         private Node next;
     }
 
@@ -53,8 +45,8 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * Initializes an empty queue.
      */
     public LinkedQueue() {
-        first = null;
-        last  = null;
+        head = null;
+        tail = null;
         n = 0;
         assert check();
     }
@@ -64,7 +56,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @return true if this queue is empty; false otherwise
      */
     public boolean isEmpty() {
-        return first == null;
+        return head == null;
     }
 
     /**
@@ -82,7 +74,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return first.item;
+        return head.item;
     }
 
     /**
@@ -90,12 +82,12 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @param item the item to add
      */
     public void enqueue(Item item) {
-        Node oldlast = last;
-        last = new Node();
-        last.item = item;
-        last.next = null;
-        if (isEmpty()) first = last;
-        else           oldlast.next = last;
+        Node oldTail = tail;
+        tail = new Node();
+        tail.item = item;
+        tail.next = null;
+        if (isEmpty()) head = tail;
+        else           oldTail.next = tail;
         n++;
         assert check();
     }
@@ -107,10 +99,10 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      */
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        Item item = first.item;
-        first = first.next;
+        Item item = head.item;
+        head = head.next;
         n--;
-        if (isEmpty()) last = null;   // to avoid loitering
+        if (isEmpty()) tail = null;   // to avoid loitering
         assert check();
         return item;
     }
@@ -132,33 +124,33 @@ public class LinkedQueue<Item> implements Iterable<Item> {
             return false;
         }
         else if (n == 0) {
-            if (first != null) return false;
-            if (last  != null) return false;
+            if (head != null) return false;
+            if (tail != null) return false;
         }
         else if (n == 1) {
-            if (first == null || last == null) return false;
-            if (first != last)                 return false;
-            if (first.next != null)            return false;
+            if (head == null || tail == null) return false;
+            if (head != tail)                 return false;
+            if (head.next != null)            return false;
         }
         else {
-            if (first == null || last == null) return false;
-            if (first == last)      return false;
-            if (first.next == null) return false;
-            if (last.next  != null) return false;
+            if (head == null || tail == null) return false;
+            if (head == tail)      return false;
+            if (head.next == null) return false;
+            if (tail.next  != null) return false;
 
             // check internal consistency of instance variable n
             int numberOfNodes = 0;
-            for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
+            for (Node x = head; x != null && numberOfNodes <= n; x = x.next) {
                 numberOfNodes++;
             }
             if (numberOfNodes != n) return false;
 
             // check internal consistency of instance variable last
-            Node lastNode = first;
+            Node lastNode = head;
             while (lastNode.next != null) {
                 lastNode = lastNode.next;
             }
-            if (last != lastNode) return false;
+            if (tail != lastNode) return false;
         }
 
         return true;
@@ -175,7 +167,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     // an iterator, doesn't implement remove() since it's optional
     private class LinkedIterator implements Iterator<Item> {
-        private Node current = first;
+        private Node current = head;
 
         public boolean hasNext()  { return current != null;                     }
         public void remove()      { throw new UnsupportedOperationException();  }
@@ -206,27 +198,3 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/
