@@ -31,9 +31,9 @@ import java.util.NoSuchElementException;
  */
 public class Queue<Item> implements Iterable<Item> {
     
-    private Node<Item> head;    // beginning of queue
+    private Node<Item> front;    // beginning of queue
     
-    private Node<Item> tail;     // end of queue
+    private Node<Item> rear;     // end of queue
     
     private int n;               // number of elements on queue
 
@@ -49,8 +49,8 @@ public class Queue<Item> implements Iterable<Item> {
      * Initializes an empty queue.
      */
     public Queue() {
-        head = null;
-        tail = null;
+        front = null;
+        rear = null;
         n = 0;
     }
 
@@ -60,7 +60,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return {@code true} if this queue is empty; {@code false} otherwise
      */
     public boolean isEmpty() {
-        return head == null;
+        return front == null;
     }
 
     /**
@@ -78,12 +78,12 @@ public class Queue<Item> implements Iterable<Item> {
      * @param  item the item to add
      */
     public void enqueue(Item item) {
-        Node<Item> oldTail = tail;
-        tail = new Node<>();
-        tail.item = item;
-        tail.next = null;
-        if (isEmpty()) head = tail;
-        else           oldTail.next = tail;
+        Node<Item> oldRear = rear;
+        rear = new Node<>();
+        rear.item = item;
+        rear.next = null;
+        if (isEmpty()) front = rear;
+        else           oldRear.next = rear;
         n++;
     }
 
@@ -95,10 +95,10 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        Item item = head.item;
-        head = head.next;
+        Item item = front.item;
+        front = front.next;
         n--;
-        if (isEmpty()) tail = null;   // to avoid loitering
+        if (isEmpty()) rear = null;   // to avoid loitering
         return item;
     }
 
@@ -110,7 +110,7 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return head.item;
+        return front.item;
     }
 
     /**
@@ -133,7 +133,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
     public Iterator<Item> iterator()  {
-        return new LinkedIterator(head);
+        return new LinkedIterator(front);
     }
 
     /** an iterator, doesn't implement remove() since it's optional */

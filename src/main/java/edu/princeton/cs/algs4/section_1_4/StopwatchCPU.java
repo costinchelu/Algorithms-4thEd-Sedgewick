@@ -1,18 +1,4 @@
-/******************************************************************************
- *  Compilation:  javac StopwatchCPU.java
- *  Execution:    java StopwatchCPU n
- *  Dependencies: none
- *
- *  A version of Stopwatch.java that measures CPU time on a single
- *  core or processor (instead of wall clock time).
- *
- *  % java8 StopwatchCPU 100000000
- *  6.666667e+11 (1.05 seconds)
- *  6.666667e+11 (7.50 seconds)
- *
- ******************************************************************************/
-
-package edu.princeton.cs.algs4;
+package edu.princeton.cs.algs4.section_1_4;
 
 import edu.princeton.cs.algs4.in_out.StdOut;
 
@@ -20,21 +6,22 @@ import java.lang.management.ThreadMXBean;
 import java.lang.management.ManagementFactory;
 
 /**
- *  The {@code StopwatchCPU} data type is for measuring
- *  the CPU time used during a programming task.
+ * The {@code StopwatchCPU} data type is for measuring
+ * the CPU time used during a programming task.
+ * <p>
+ * See {@link Stopwatch} for a version that measures wall-clock time
+ * (the real time that elapses).
  *
- *  See {@link Stopwatch} for a version that measures wall-clock time
- *  (the real time that elapses).
- *
- *  @author Josh Hug
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Josh Hug
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
-
 public class StopwatchCPU {
+
     private static final double NANOSECONDS_PER_SECOND = 1000000000;
 
     private final ThreadMXBean threadTimer;
+
     private final long start;
 
     /**
@@ -88,27 +75,3 @@ public class StopwatchCPU {
         StdOut.printf("%e (%.2f seconds)\n", sum2, time2);
     }
 }
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/
