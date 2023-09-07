@@ -1,20 +1,3 @@
-/******************************************************************************
- *  Compilation:  javac LinkedStack.java
- *  Execution:    java LinkedStack < input.txt
- *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *
- *  A generic stack, implemented using a linked list. Each stack
- *  element is of type Item.
- *
- *  % more tobe.txt
- *  to be or not to - be - - that - - - is
- *
- *  % java LinkedStack < tobe.txt
- *  to be not that or be (2 left on stack)
- *
- ******************************************************************************/
-
 package edu.princeton.cs.algs4.section_1_3;
 
 import edu.princeton.cs.algs4.in_out.StdIn;
@@ -44,12 +27,16 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedStack<Item> implements Iterable<Item> {
+
     private int n;          // size of the stack
+
     private Node first;     // top of stack
 
     // helper linked list class
     private class Node {
+
         private Item item;
+
         private Node next;
     }
 
@@ -196,28 +183,3 @@ public class LinkedStack<Item> implements Iterable<Item> {
         StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
-
-
-/******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/
