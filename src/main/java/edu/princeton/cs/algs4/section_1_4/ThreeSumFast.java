@@ -57,6 +57,8 @@ public class ThreeSumFast {
      * @param a the array of integers
      * @return the number of triples (i, j, k) with {@code i < j < k}
      * such that {@code a[i] + a[j] + a[k] == 0}
+     * <p></p>
+     * Algorithm complexity: {@code O(N^2 log(n))}
      */
     public static int count(int[] a) {
         int n = a.length;

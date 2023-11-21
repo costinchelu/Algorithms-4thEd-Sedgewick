@@ -44,6 +44,8 @@ public class TwoSum {
    /**
     * Returns the number of doubles (i, j) with {@code i < j} such that
     * {@code a[i] + a[j] == 0}.
+    * <p>
+    * Algorithm complexity: {@code O(n^2)}
     *
     * @param a
     *           the array of integers

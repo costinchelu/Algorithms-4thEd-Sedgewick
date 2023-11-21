@@ -8,7 +8,6 @@ import edu.princeton.cs.algs4.section_1_1.BinarySearch;
 
 public class TwoSumFast {
 
-
    /**
     * Count pairs that sum to 0.
     * <p></p>
@@ -21,14 +20,18 @@ public class TwoSumFast {
     * <p></p>
     * case the returned index is lower than the index we are searching, we will not count because
     * we don't want double counting
+    * <p></p>
+    * Algorithm complexity: {@code O(n log(n))}
     * */
    public static int count(int[] a) {
-      Arrays.sort(a);
+      Arrays.sort(a);                                    // O(n log(n))
       int N = a.length;
       int cnt = 0;
-      for (int i = 0; i < N; i++)
-         if (BinarySearch.rank(-a[i], a) > i)
+      for (int i = 0; i < N; i++) {
+         if (BinarySearch.indexOf(a, -a[i]) > i) {          // O(log(n))
             cnt++;
+         }
+      }
       return cnt;
    }
 
