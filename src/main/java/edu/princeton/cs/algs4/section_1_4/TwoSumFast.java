@@ -1,6 +1,7 @@
 package edu.princeton.cs.algs4.section_1_4;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.in_out.StdOut;
@@ -28,11 +29,28 @@ public class TwoSumFast {
       int N = a.length;
       int cnt = 0;
       for (int i = 0; i < N; i++) {
-         if (BinarySearch.indexOf(a, -a[i]) > i) {          // O(log(n))
+         if (BinarySearch.indexOf(a, -a[i]) > i) {        // O(log(n))
             cnt++;
          }
       }
       return cnt;
+   }
+
+   // trading time complexity for space complexity
+   // O(N) = linear time:
+   public static int twoSumEvenFaster(int[] a) {
+      HashSet<Integer> numberSet = new HashSet<>();
+      int count = 0;
+
+      for(int num : a){
+         if(numberSet.contains(-num)) {            // Check if set contains negative of num
+            count++;
+         } else {
+            numberSet.add(num);                    // If not, add element to set
+         }
+      }
+
+      return count;
    }
 
    public static void main(String[] args) throws Exception {
@@ -41,6 +59,6 @@ public class TwoSumFast {
       int[] a = Arrays.stream(in.readAllLines()).map(String::trim).mapToInt(Integer::valueOf).toArray();
       Stopwatch stopwatch = new Stopwatch();
       StdOut.println(count(a));
-      StdOut.printf("%e (%.2f seconds)\n", 0.0, stopwatch.elapsedTime());
+      StdOut.printf("%e (%.4f seconds)\n", 0.0, stopwatch.elapsedTime());
    }
 }
