@@ -24,7 +24,7 @@ package edu.princeton.cs.algs4;
 
 import edu.princeton.cs.algs4.in_out.In;
 import edu.princeton.cs.algs4.in_out.StdOut;
-import edu.princeton.cs.algs4.section_1_3.Stack;
+import edu.princeton.cs.algs4.s_1_3_fundamental_ds.Stack;
 
 import java.util.Iterator;
 

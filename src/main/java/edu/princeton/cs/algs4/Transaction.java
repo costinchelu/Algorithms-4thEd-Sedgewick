@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 import edu.princeton.cs.algs4.in_out.StdOut;
-import edu.princeton.cs.algs4.section_1_2.Date;
+import edu.princeton.cs.algs4.s_1_2_simple_algs.Date;
 
 import java.util.Arrays;
 import java.util.Comparator;

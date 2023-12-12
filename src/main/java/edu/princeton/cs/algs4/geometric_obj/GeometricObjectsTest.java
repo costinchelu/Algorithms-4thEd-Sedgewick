@@ -3,7 +3,7 @@ package edu.princeton.cs.algs4.geometric_obj;
 import edu.princeton.cs.algs4.in_out.StdDraw;
 import edu.princeton.cs.algs4.in_out.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.section_1_2.Counter;
+import edu.princeton.cs.algs4.s_1_2_simple_algs.Counter;
 
 import java.util.Arrays;
 
